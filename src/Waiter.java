@@ -19,7 +19,7 @@ public void run(){
 			do{
 				System.out.println("Pêtla do, kelner nr "+waiterId);
 				/*
-				 * checking if there are products for professor and if there are professors who needs products
+				 * checking if there are products for participants and if there are participants, if so then release semaphores
 				 */
 				
 					if((main.theoCoffe>0) & (main.theoMilk>0) & (main.theoSugar>0) & (main.quantityProfessor>0)){
