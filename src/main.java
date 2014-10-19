@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 
-public class main {
+public class main{
 	/*
 	 * Semaphores declaration
 	 */
@@ -26,13 +26,15 @@ public class main {
 	public static volatile int theoSugar;
 	
 	/*
-	 * A number of participants who awaits in the queue
+	 * A number of participants who awaits in the queue and still didn't get products
 	 */
 	public static volatile int quantityDoctor;
 	public static volatile int quantityProfessor;
 	public static volatile int quantityStudent;
 	public static volatile int quantityPhDStudent;
-	
+	/*
+	 * A number of participants who awaits in the queue but their products are already reserved
+	 */
 	public static volatile int realQuantityDoctor;
 	public static volatile int realQuantityProfessor;
 	public static volatile int realQuantityStudent;
@@ -55,31 +57,70 @@ public class main {
 		realQuantityStudent=0;
 		realQuantityPhDStudent=0;
 		
-		realMilk=1;
+		realMilk=3;
 		realCoffe=3;
-		realSugar=2;
+		realSugar=3;
 		
 		theoMilk=3;
 		theoCoffe=3;
 		theoSugar=3;
 		
+		/*
+		 * variables keeping id of each new participant
+		 */
+		
+		int idCounterStudent = 1;
+		int idCounterProfessor=1;
+		int idCounterDoctor=1;
+		int idCounterPhDStudent=1;
+		
 		for(int i=0;i<2;i++){
 			Waiter w = new Waiter(i);
 			w.start();
 		}
-		for(int i=0;i<10;i++){			
-		Professor p = new Professor(i);
-		realQuantityProfessor++;
-		quantityProfessor++;
-		p.start();			
-		}
-		for(int i=0;i<10;i++){			
-		Doctor d = new Doctor(i);
-		realQuantityDoctor++;
-		quantityDoctor++;
-		d.start();			
+		for(int i=0;i<20;i++){
+			Random rand = new Random();
+			int randomNum = rand.nextInt(4);
+			if(randomNum==0){
+				Professor p = new Professor(idCounterProfessor);
+				realQuantityProfessor++;
+				quantityProfessor++;
+				idCounterProfessor++;
+				p.start();	
+			}
+			else if(randomNum==1){
+				Doctor d = new Doctor(idCounterDoctor);
+				realQuantityDoctor++;
+				quantityDoctor++;
+				idCounterDoctor++;
+				d.start();	
+			}
+			else if(randomNum==2){
+				PhDStudent phd = new PhDStudent(idCounterPhDStudent);
+				realQuantityPhDStudent++;
+				quantityPhDStudent++;
+				idCounterPhDStudent++;
+				phd.start();	
+			}
+			else{
+				Student s = new Student(idCounterStudent);
+				realQuantityStudent++;
+				quantityStudent++;
+				idCounterStudent++;
+				s.start();
+			}	
+				int randtime = rand.nextInt(500)+700;
+				try {
+					Thread.sleep(randtime);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			
 		}
 	}
+
+		
 	    public static void Status(String s){
 		System.out.println("***********"+s+"******************");
 		System.out.println("real number of professors"+main.realQuantityProfessor);

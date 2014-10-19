@@ -19,7 +19,7 @@ public void run(){
 			do{
 				System.out.println("Pêtla do, kelner nr "+waiterId);
 				/*
-				 * checking if there are products for participants and if there are participants, if so then release semaphores
+				 * checking if there are products for participants and if there are participants, if so then release semaphores3
 				 */
 				
 					if((main.theoCoffe>0) & (main.theoMilk>0) & (main.theoSugar>0) & (main.quantityProfessor>0)){
@@ -80,15 +80,15 @@ public void run(){
 			}
 			else if(products.size()==1){
 				if(products.get(0)=="Milk"){
-					main.theoMilk=main.theoMilk+(3-main.realMilk);
+					main.theoMilk=3-(main.realMilk-main.theoMilk);
 					main.realMilk=3;
 				}
 				else if(products.get(0)=="Sugar"){
-					main.theoSugar=main.theoSugar+(3-main.realSugar);
+					main.theoSugar=3-(main.realSugar-main.theoSugar);
 					main.realSugar=3;
 				}
 				else{
-					main.theoCoffe=main.theoCoffe+(3-main.realCoffe);
+					main.theoCoffe=3-(main.realCoffe-main.theoCoffe);
 					main.realCoffe=3;
 				}
 			}
@@ -96,15 +96,15 @@ public void run(){
 				Random rand = new Random();
 			    int randomNum = rand.nextInt(2);
 			    if(products.get(randomNum)=="Milk"){
-			    	main.theoMilk=main.theoMilk+(3-main.realMilk);
+			    	main.theoMilk=3-(main.realMilk-main.theoMilk);
 			    	main.realMilk=3;
 			    	}
 				else if(products.get(randomNum)=="Sugar"){
-					main.theoSugar=main.theoSugar+(3-main.realSugar);
+					main.theoSugar=3-(main.realSugar-main.theoSugar);
 					main.realSugar=3;
 				}
 				else{
-					main.theoCoffe=main.theoCoffe+(3-main.realCoffe);
+					main.theoCoffe=3-(main.realCoffe-main.theoCoffe);
 					main.realCoffe=3;
 				}
 			}
@@ -112,15 +112,15 @@ public void run(){
 				Random rand = new Random();
 			    int randomNum = rand.nextInt(3);
 			    if(products.get(randomNum)=="Milk"){
-			    	main.theoMilk=main.theoMilk+(3-main.realMilk);
+			    	main.theoMilk=3-(main.realMilk-main.theoMilk);
 			    	main.realMilk=3;
 			    }
 				else if(products.get(randomNum)=="Sugar"){
-					main.theoSugar=main.theoSugar+(3-main.realSugar);
+					main.theoSugar=3-(main.realSugar-main.theoSugar);
 					main.realSugar=3;
 				}
 				else{
-					main.theoCoffe=main.theoCoffe+(3-main.realCoffe);
+					main.theoCoffe=3-(main.realCoffe-main.theoCoffe);
 					main.realCoffe=3;
 				}
 			}
