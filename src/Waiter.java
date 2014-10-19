@@ -11,7 +11,7 @@ public void run(){
 	while(true){
 		try {
 			main.sTable.acquire();
-			Refill(this);
+			Refill();
 			/*
 			 * Now i'm giving theoretical products to participants 
 			 */
@@ -23,7 +23,6 @@ public void run(){
 				 */
 				
 					if((main.theoCoffe>0) & (main.theoMilk>0) & (main.theoSugar>0) & (main.quantityProfessor>0)){
-						System.out.println("Sprawdzanie profesora");
 						main.theoCoffe--;
 						main.theoMilk--;
 						main.theoSugar--;
@@ -55,7 +54,7 @@ public void run(){
 			}while(takeProducts);
 			main.Status("Waiter"+waiterId);
 			main.sTable.release();
-			this.sleep(100);
+			this.sleep(1200);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -65,7 +64,7 @@ public void run(){
 /*
  * This method refills containers with products
  */
-		void Refill(Thread t){
+		void Refill(){
 			ArrayList<String> products = new ArrayList<String>();
 			if(main.realMilk<3)products.add("Milk");
 			if(main.realSugar<3)products.add("Sugar");
@@ -73,7 +72,7 @@ public void run(){
 			if(products.isEmpty()){
 				System.out.println("Containers are full, waiter is going for a smoke");
 				try {
-					t.sleep(1000);
+					Waiter.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

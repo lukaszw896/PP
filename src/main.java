@@ -83,29 +83,21 @@ public class main{
 			int randomNum = rand.nextInt(4);
 			if(randomNum==0){
 				Professor p = new Professor(idCounterProfessor);
-				realQuantityProfessor++;
-				quantityProfessor++;
 				idCounterProfessor++;
 				p.start();	
 			}
 			else if(randomNum==1){
 				Doctor d = new Doctor(idCounterDoctor);
-				realQuantityDoctor++;
-				quantityDoctor++;
 				idCounterDoctor++;
 				d.start();	
 			}
 			else if(randomNum==2){
 				PhDStudent phd = new PhDStudent(idCounterPhDStudent);
-				realQuantityPhDStudent++;
-				quantityPhDStudent++;
 				idCounterPhDStudent++;
 				phd.start();	
 			}
 			else{
 				Student s = new Student(idCounterStudent);
-				realQuantityStudent++;
-				quantityStudent++;
 				idCounterStudent++;
 				s.start();
 			}	
@@ -123,10 +115,10 @@ public class main{
 		
 	    public static void Status(String s){
 		System.out.println("***********"+s+"******************");
-		System.out.println("real number of professors"+main.realQuantityProfessor);
-		System.out.println("real number of doctors"+main.realQuantityDoctor);
-		System.out.println("theoretical number of professors"+main.quantityProfessor);
-		System.out.println("theoretical number of doctors"+main.quantityDoctor);
+		System.out.println("Number of professors in the queue"+main.realQuantityProfessor);
+		System.out.println("Number of doctors in the queue"+main.realQuantityDoctor);
+		System.out.println("Number of PhD Students in the queue"+main.realQuantityPhDStudent);
+		System.out.println("Number of Students in the queue"+main.realQuantityStudent);
 		System.out.println("rMilk: "+main.realMilk+" ,rCoffe: "+main.realCoffe+" ,rSugar: "+realSugar);
 		System.out.println("tMilk: "+main.theoMilk+" ,tCoffe: "+main.theoCoffe+" ,tSugar: "+theoSugar);
 		System.out.println();

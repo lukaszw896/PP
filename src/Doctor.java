@@ -5,10 +5,28 @@ public class Doctor extends Thread{
 		idDoctor = num;
 	}
 	public void run(){
+		boolean isProduct=false;
 		try{
-			System.out.print("Doctor nr. "+idDoctor+"comes to table\n");
+				main.sTable.acquire();
+				System.out.print("Doctor nr. "+idDoctor+"comes to table\n");
+				main.realQuantityDoctor++;
+				main.quantityDoctor++;
+			/*Checking if there are products for doctor, if so then release and acquire */
+			if((main.theoCoffe>0) & (main.theoMilk>0)){
+				main.theoCoffe--;
+				main.theoMilk--;
+				main.quantityDoctor--;
+				main.sDoctor.release();
+			}
+			else{
+				isProduct=true;
+				main.sTable.release();
+			}
+			/**/
 			main.sDoctor.acquire();
-			main.sTable.acquire();
+			if(isProduct){
+				main.sTable.acquire();
+			}
 			main.realMilk--;
 			main.realCoffe--;
 			main.realQuantityDoctor--;

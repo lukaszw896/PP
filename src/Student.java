@@ -5,10 +5,26 @@ public class Student extends Thread{
 		idStudent = num;
 	}
 	public void run(){
+		boolean isProduct=false;
 		try{
-			System.out.print("PhDStudent nr. "+idStudent+"comes to table\n");
+				main.sTable.acquire();
+				System.out.print("Student nr. "+idStudent+"comes to table\n");
+				main.realQuantityStudent++;
+				main.quantityStudent++;
+			if((main.theoMilk>0) & (main.theoSugar>0) ){
+				main.theoMilk--;;
+				main.theoSugar--;
+				main.quantityStudent--;
+				main.sStudent.release();
+			}
+			else{
+				isProduct=true;
+				main.sTable.release();
+			}
 			main.sStudent.acquire();
-			main.sTable.acquire();
+			if(isProduct){
+				main.sTable.acquire();
+			}
 			main.realSugar--;
 			main.realMilk--;
 			main.realQuantityStudent--;
