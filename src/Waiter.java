@@ -17,9 +17,8 @@ public void run(){
 			 */
 			boolean takeProducts=true;
 			do{
-				System.out.println("Pêtla do, kelner nr "+waiterId);
 				/*
-				 * checking if there are products for participants and if there are participants, if so then release semaphores3
+				 * checking if there are products for participants and if there are participants who needs these products, if so then release semaphores
 				 */
 				
 					if((main.theoCoffe>0) & (main.theoMilk>0) & (main.theoSugar>0) & (main.quantityProfessor>0)){
@@ -54,7 +53,7 @@ public void run(){
 			}while(takeProducts);
 			main.Status("Waiter"+waiterId);
 			main.sTable.release();
-			this.sleep(1200);
+			this.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -62,7 +61,8 @@ public void run(){
 	}	
 }
 /*
- * This method refills containers with products
+ * This method refills containers with products. At first I'm checking how many containers are not full. 
+ * If there is more than one which need to be refilled than I pick a random one.
  */
 		void Refill(){
 			ArrayList<String> products = new ArrayList<String>();
@@ -72,7 +72,9 @@ public void run(){
 			if(products.isEmpty()){
 				System.out.println("Containers are full, waiter is going for a smoke");
 				try {
-					Waiter.sleep(1000);
+					Random r = new Random();
+					int rand = r.nextInt(1000)+1000;
+					Waiter.sleep(rand);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

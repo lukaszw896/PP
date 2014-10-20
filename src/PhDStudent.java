@@ -20,6 +20,7 @@ public class PhDStudent extends Thread{
 			else{
 				isProduct=true;
 				main.sTable.release();
+				System.out.print("There is no products for "+idPhDStudent+". Moving to queue\n");
 			}
 			main.sPhDStudent.acquire();
 			if(isProduct){

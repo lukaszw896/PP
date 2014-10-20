@@ -5,8 +5,8 @@ public class Professor extends Thread{
 		idProfessor = num;
 	}
 	/*
-	 * Professor is comming to the table. After that he checks whether there are needed products or not. If so then 
-	 * he makes hiis coffe and go away. If not sTable.release() and wait in Professor queue. After acquiring he checks
+	 * Professor is coming to the table. After that he checks whether there are needed products or not. If so then 
+	 * he makes his coffee and go away. If not sTable.release() and wait in Professor queue. After acquiring he checks
 	 * if he was in queue or not. 	
 	 * (non-Javadoc)
 	 * @see java.lang.Thread#run()
@@ -26,9 +26,13 @@ public class Professor extends Thread{
 				main.quantityProfessor--;
 				main.sProfessor.release();
 			}
+			/*
+			 * If there is no products for professor than he is releasing table semaphore and waits for resources from semaphore 
+			 */
 			else{
 				isProduct=true;
 				main.sTable.release();
+				System.out.print("There is no products for "+idProfessor+". Moving to queue\n");
 			}
 			
 			/*  */

@@ -21,6 +21,7 @@ public class Doctor extends Thread{
 			else{
 				isProduct=true;
 				main.sTable.release();
+				System.out.print("There is no products for "+idDoctor+". Moving to queue\n");
 			}
 			/**/
 			main.sDoctor.acquire();
