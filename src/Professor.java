@@ -35,7 +35,8 @@ public class Professor extends Thread{
 				System.out.print("There is no products for "+idProfessor+". Moving to queue\n");
 			}
 			
-			/*  */
+			/*
+			 * If there are all products needed by professor than professor gets his coffe and go away (  */
 			main.sProfessor.acquire();
 			if(isProduct){
 				main.sTable.acquire();

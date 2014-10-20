@@ -1,3 +1,4 @@
+/* Everything works like in professor class which is a few more comments*/
 
 public class Student extends Thread{
 	int idStudent;

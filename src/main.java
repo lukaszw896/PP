@@ -78,6 +78,9 @@ public class main{
 			Waiter w = new Waiter(i);
 			w.start();
 		}
+		/*
+		 * Generating 20 participants of random type
+		 */
 		for(int i=0;i<20;i++){
 			Random rand = new Random();
 			int randomNum = rand.nextInt(4);

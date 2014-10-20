@@ -1,4 +1,4 @@
-
+/* Everything works like in professor class which is a few more comments*/
 public class PhDStudent extends Thread{
 	int idPhDStudent;
 	PhDStudent(int num){
